@@ -18,7 +18,7 @@ namespace DefaultArguments
                 return callerLineNumber;
             }
 
-            public static string WhatMethodIsThis([CallerMemberName] string callerMethodName = "This cake, like this default value, is a lie.")
+            public static string WhatMethodIsThis([CallerMemberName] string callerMethodName = "This value is completely irrelevant.")
             {
                 return callerMethodName;
             }
