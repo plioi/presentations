@@ -1,0 +1,20 @@
+*.txt text
+*.md text
+
+*.cmd text
+*.ps1 text
+*.sh text
+
+*.sln text eol=crlf merge=union
+*.csproj text merge=union
+*.cs text diff=csharp
+*.tdnet text
+*.nuspec text
+
+*.Config text
+*.config text
+*.targets text
+
+*.exe binary
+*.dll binary
+*.pptx binary
