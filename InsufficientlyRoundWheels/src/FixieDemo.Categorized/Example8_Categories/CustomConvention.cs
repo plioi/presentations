@@ -4,7 +4,7 @@ using System.Reflection;
 using Fixie;
 using Fixie.Conventions;
 
-namespace FixieDemo.Example8_Categories
+namespace FixieDemo.Categorized.Example8_Categories
 {
     public class CustomConvention : Convention
     {

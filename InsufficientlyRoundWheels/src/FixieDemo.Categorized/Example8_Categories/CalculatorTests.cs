@@ -1,7 +1,7 @@
 ﻿using System;
 using Should;
 
-namespace FixieDemo.Example8_Categories
+namespace FixieDemo.Categorized.Example8_Categories
 {
     public class CalculatorTests
     {
@@ -17,7 +17,7 @@ namespace FixieDemo.Example8_Categories
         [CategoryA]
         public void ShouldAdd()
         {
-            Console.Out.WhereAmI();
+            Console.WriteLine("CategoryA: ShouldAdd()");
 
             calculator.Add(2, 3).ShouldEqual(5);
         }
@@ -25,7 +25,7 @@ namespace FixieDemo.Example8_Categories
         [CategoryB]
         public void ShouldSubtract()
         {
-            Console.Out.WhereAmI();
+            Console.WriteLine("CategoryB: ShouldSubtract()");
 
             calculator.Add(2, 3).ShouldEqual(5);
         }

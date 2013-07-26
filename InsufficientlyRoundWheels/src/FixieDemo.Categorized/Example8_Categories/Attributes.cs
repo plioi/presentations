@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FixieDemo.Example8_Categories
+namespace FixieDemo.Categorized.Example8_Categories
 {
     [AttributeUsage(AttributeTargets.Method, Inherited = false)]
     public abstract class CategoryAttribute : Attribute

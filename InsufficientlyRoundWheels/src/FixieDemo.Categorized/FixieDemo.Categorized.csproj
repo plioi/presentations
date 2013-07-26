@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1260C8A-396F-4AFA-B35C-9C6002D3CB1D}</ProjectGuid>
+    <ProjectGuid>{3BDBFB49-8F8A-486E-89EF-3813601692D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FixieDemo</RootNamespace>
-    <AssemblyName>FixieDemo</AssemblyName>
+    <RootNamespace>FixieDemo.Categorized</RootNamespace>
+    <AssemblyName>FixieDemo.Categorized</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -42,38 +42,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
-    <Compile Include="Example1_NUnit\Attributes.cs" />
-    <Compile Include="Example1_NUnit\CalculatorTests.cs" />
-    <Compile Include="Example1_NUnit\CustomConvention.cs" />
-    <Compile Include="Example2_xUnit\CalculatorTests.cs" />
-    <Compile Include="Example2_xUnit\CustomConvention.cs" />
-    <Compile Include="Example2_xUnit\FactAttribute.cs" />
-    <Compile Include="Example2_xUnit\IUseFixture.cs" />
-    <Compile Include="Example3_DefaultConvention\CalculatorTests.cs" />
-    <Compile Include="Example3_DefaultConvention\DefaultConvention.cs" />
-    <Compile Include="Example4_DryTestInheritance\CalculatorTests.cs" />
-    <Compile Include="Example4_DryTestInheritance\CustomConvention.cs" />
-    <Compile Include="Example5_IoC\CustomConvention.cs" />
-    <Compile Include="Example5_IoC\FeedbackController.cs" />
-    <Compile Include="Example5_IoC\FeedbackControllerTests.cs" />
-    <Compile Include="Example5_IoC\Infrastructure.cs" />
-    <Compile Include="Example6_Transactions\CalculatorTests.cs" />
-    <Compile Include="Example6_Transactions\CustomConvention.cs" />
-    <Compile Include="Example6_Transactions\Infrastructure.cs" />
-    <Compile Include="Example6_Transactions\LameBaseTestClass.cs" />
-    <Compile Include="Example7_Explicit\CalculatorTests.cs" />
-    <Compile Include="Example7_Explicit\CustomConvention.cs" />
-    <Compile Include="Example7_Explicit\ExplicitAttribute.cs" />
+    <Compile Include="Example8_Categories\Attributes.cs" />
+    <Compile Include="Example8_Categories\CalculatorTests.cs" />
+    <Compile Include="Example8_Categories\CustomConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextWriterExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FixieDemo\FixieDemo.csproj">
+      <Project>{c1260c8a-396f-4afa-b35c-9c6002d3cb1d}</Project>
+      <Name>FixieDemo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
