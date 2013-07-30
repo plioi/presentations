@@ -35,6 +35,8 @@ namespace FixieDemo.Example2_xUnit
 
         void PrepareFixtureData(Type testClass)
         {
+            fixtures.Clear();
+
             foreach (var @interface in FixtureInterfaces(testClass))
             {
                 var fixtureDataType = @interface.GetGenericArguments()[0];
