@@ -16,22 +16,16 @@ namespace FixieDemo.Example4_DryTestInheritance
 
             Cases
                 .Where(method => method.Void())
-                .Where(method => LifecycleMethods.All(x => x != method.Name))
-                .ZeroParameters();
+                .Where(method => LifecycleMethods.All(x => x != method.Name));
 
             ClassExecution
                 .CreateInstancePerTestClass();
 
             InstanceExecution
-                .SetUpTearDown(Method("FixtureSetUp"), Method("FixtureTearDown"));
+                .SetUpTearDown("FixtureSetUp", "FixtureTearDown");
 
             CaseExecution
-                .SetUpTearDown(Method("SetUp"), Method("TearDown"));
-        }
-
-        static MethodFilter Method(string methodName)
-        {
-            return new MethodFilter().Where(x => x.HasSignature(typeof(void), methodName));
+                .SetUpTearDown("SetUp", "TearDown");
         }
     }
 }

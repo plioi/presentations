@@ -1,5 +1,4 @@
-﻿using System;
-using Fixie.Conventions;
+﻿using Fixie.Conventions;
 
 namespace FixieDemo.Example1_NUnit
 {
@@ -17,15 +16,10 @@ namespace FixieDemo.Example1_NUnit
                     .CreateInstancePerTestClass();
 
             InstanceExecution
-                .SetUpTearDown(Has<TestFixtureSetUpAttribute>(), Has<TestFixtureTearDownAttribute>());
+                .SetUpTearDown<TestFixtureSetUpAttribute, TestFixtureTearDownAttribute>();
 
             CaseExecution
-                .SetUpTearDown(Has<SetUpAttribute>(), Has<TearDownAttribute>());
-        }
-
-        static MethodFilter Has<TAttribute>() where TAttribute : Attribute
-        {
-            return new MethodFilter().HasOrInherits<TAttribute>();
+                .SetUpTearDown<SetUpAttribute, TearDownAttribute>();
         }
     }
 }

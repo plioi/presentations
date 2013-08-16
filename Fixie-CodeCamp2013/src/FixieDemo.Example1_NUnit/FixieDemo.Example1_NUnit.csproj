@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fixie">
-      <HintPath>..\packages\Fixie.0.0.1.75\lib\net45\Fixie.dll</HintPath>
+    <Reference Include="Fixie, Version=0.0.1.86, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Fixie.0.0.1.86\lib\net45\Fixie.dll</HintPath>
     </Reference>
     <Reference Include="Should">
       <HintPath>..\packages\Should.1.1.20\lib\Should.dll</HintPath>
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.cs" />
+    <Compile Include="BehaviorBuilderExtensions.cs" />
     <Compile Include="CalculatorTests.cs" />
     <Compile Include="CustomConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

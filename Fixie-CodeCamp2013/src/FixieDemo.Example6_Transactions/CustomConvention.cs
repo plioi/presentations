@@ -12,8 +12,7 @@ namespace FixieDemo.Example6_Transactions
                 .NameEndsWith("Tests");
 
             Cases
-                .Where(method => method.Void())
-                .ZeroParameters();
+                .Where(method => method.Void());
 
             InstanceExecution
                 .Wrap((fixture, innerBehavior) =>

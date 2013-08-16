@@ -19,7 +19,6 @@ namespace FixieDemo.Example8_Categories
 
             Cases
                 .Where(method => method.Void())
-                .ZeroParameters()
                 .Where(method => shouldRunAll || MethodHasAnyDesiredCategory(method, desiredCategories));
 
             if (!shouldRunAll)
