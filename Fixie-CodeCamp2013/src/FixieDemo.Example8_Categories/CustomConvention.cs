@@ -14,7 +14,6 @@ namespace FixieDemo.Example8_Categories
             var shouldRunAll = !desiredCategories.Any();
 
             Classes
-                .Where(type => type.IsInNamespace(GetType().Namespace))
                 .NameEndsWith("Tests");
 
             Cases

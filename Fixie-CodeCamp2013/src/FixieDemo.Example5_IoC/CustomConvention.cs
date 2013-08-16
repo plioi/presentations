@@ -13,7 +13,6 @@ namespace FixieDemo.Example5_IoC
             container = InitContainerForIntegrationTests();
 
             Classes
-                .Where(type => type.IsInNamespace(GetType().Namespace))
                 .NameEndsWith("Tests");
 
             Cases

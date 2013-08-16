@@ -11,7 +11,6 @@ namespace FixieDemo.Example4_DryTestInheritance
         public CustomConvention()
         {
             Classes
-                .Where(type => type.IsInNamespace(GetType().Namespace))
                 .NameEndsWith("Tests");
 
             Cases

@@ -8,7 +8,6 @@ namespace FixieDemo.Example7_Explicit
         public CustomConvention(RunContext runContext)
         {
             Classes
-                .Where(type => type.IsInNamespace(GetType().Namespace))
                 .NameEndsWith("Tests");
 
             Cases

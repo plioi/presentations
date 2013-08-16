@@ -8,7 +8,6 @@ namespace FixieDemo.Example6_Transactions
         public IntegrationTestConvention()
         {
             Classes
-                .Where(type => type.IsInNamespace(GetType().Namespace))
                 .NameEndsWith("Tests");
 
             Cases
