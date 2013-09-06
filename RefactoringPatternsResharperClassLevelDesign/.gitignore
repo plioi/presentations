@@ -1,0 +1,9 @@
+*.suo
+bin
+obj
+build
+package
+src/packages
+*.DotSettings.user
+*.csproj.user
+TestResult.xml
