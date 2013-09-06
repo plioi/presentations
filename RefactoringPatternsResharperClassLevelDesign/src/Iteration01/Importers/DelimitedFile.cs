@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Iteration01.Importers
 {
@@ -17,17 +18,28 @@ namespace Iteration01.Importers
 
         public T[] Read(string path)
         {
-            return GetLines(path).Select(CreateItem).ToArray();
-        }
+            var parser = new TextFieldParser(path);
+            parser.TextFieldType = FieldType.Delimited;
+            parser.HasFieldsEnclosedInQuotes = true;
+            parser.SetDelimiters(_delimiter.ToString());
 
-        private IEnumerable<string[]> GetLines(string path)
-        {
-            var lines =
-                _hasHeaderLine
-                    ? File.ReadAllLines(path).Skip(1)
-                    : File.ReadAllLines(path);
-            
-            return lines.Select(line => line.Split(_delimiter));
+            var items = new List<T>();
+
+            while (!parser.EndOfData)
+            {
+                bool atHeaderLine = parser.LineNumber == 1 && _hasHeaderLine;
+
+                var fields = parser.ReadFields();
+
+                if (atHeaderLine)
+                    continue;
+
+                items.Add(CreateItem(fields));
+            }
+
+            parser.Close();
+
+            return items.ToArray();
         }
 
         protected abstract T CreateItem(string[] fields);
