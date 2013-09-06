@@ -15,6 +15,7 @@ task default -depends Test
 
 task Test -depends Compile {
     NUnit "Iteration00"
+    NUnit "Iteration01"
 }
 
 task Compile -depends CommonAssemblyInfo {
