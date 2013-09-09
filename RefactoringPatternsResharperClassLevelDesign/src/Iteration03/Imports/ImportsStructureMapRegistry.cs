@@ -11,6 +11,8 @@ namespace Iteration03.Imports
                 scan.TheCallingAssembly();
                 scan.AddAllTypesOf<IDelimitedFile>();
             });
+
+            For<ConfigurationStore>().Singleton();
         }
     }
 }
