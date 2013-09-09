@@ -51,7 +51,6 @@
     </Compile>
     <Compile Include="DependencyResolution\DependencyRegistrar.cs" />
     <Compile Include="Headspring\Enumeration.cs" />
-    <Compile Include="Imports\ConfigurationStore.cs" />
     <Compile Include="Imports\DelimitedFile.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Imports\DelimitedFileColumn.cs" />

@@ -12,7 +12,7 @@ namespace Iteration03.Imports
                 scan.AddAllTypesOf<IDelimitedFile>();
             });
 
-            For<ConfigurationStore>().Singleton();
+            For<DelimitedFileImporter>().Singleton();
         }
     }
 }

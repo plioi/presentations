@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Iteration03.Model;
 using Microsoft.VisualBasic.FileIO;
 
@@ -8,16 +9,16 @@ namespace Iteration03.Imports
 {
     public class DelimitedFileImporter
     {
-        private readonly ConfigurationStore _configurationStore;
+        private readonly IDictionary<Type, IDelimitedFile> _filesByType;
 
-        public DelimitedFileImporter(ConfigurationStore configurationStore)
+        public DelimitedFileImporter(params IDelimitedFile[] delimitedFiles)
         {
-            _configurationStore = configurationStore;
+            _filesByType = delimitedFiles.ToDictionary(file => file.RowType);
         }
 
         public IEnumerable<TRow> Import<TRow>() where TRow : new()
         {
-            var config = _configurationStore.GetFileConfiguration<TRow>();
+            var config = _filesByType[typeof(TRow)];
 
             var parser = new TextFieldParser(config.Path);
             parser.TextFieldType = FieldType.Delimited;
