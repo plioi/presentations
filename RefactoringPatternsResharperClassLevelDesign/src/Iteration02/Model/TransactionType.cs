@@ -1,4 +1,5 @@
-﻿using Headspring;
+﻿using System.Linq;
+using Headspring;
 
 namespace Iteration02.Model
 {
@@ -14,5 +15,10 @@ namespace Iteration02.Model
         }
 
         public string Code { get; private set; }
+
+        public static TransactionType GetTransactionType(string code)
+        {
+            return GetAll().Single(x => x.Code == code);
+        }
     }
 }
