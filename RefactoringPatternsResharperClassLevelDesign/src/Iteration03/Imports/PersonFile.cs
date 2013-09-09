@@ -6,10 +6,10 @@ namespace Iteration03.Imports
     {
         public PersonFile()
         {
-            Path("InputFiles\\People.txt");
-            TimeStampFormat("M/d/yyyy");
-            Delimiter('|');
-            HasHeaderLine();
+            Path = "InputFiles\\People.txt";
+            TimeStampFormat = "M/d/yyyy";
+            Delimiter = '|';
+            HasHeaderLine = true;
 
             Column(x => x.Name);
             Column(x => x.Birthday);

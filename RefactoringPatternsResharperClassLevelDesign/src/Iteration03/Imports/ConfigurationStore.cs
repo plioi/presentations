@@ -5,23 +5,21 @@ namespace Iteration03.Imports
 {
     public class ConfigurationStore
     {
-        private readonly IDictionary<Type, DelimitedFileConfiguration> _fileConfigurations = new Dictionary<Type, DelimitedFileConfiguration>();
+        private readonly IDictionary<Type, IDelimitedFile> _fileConfigurations = new Dictionary<Type, IDelimitedFile>();
 
         public ConfigurationStore(params IDelimitedFile[] delimitedFiles)
         {
             delimitedFiles.ForEach(Add);
         }
 
-        public DelimitedFileConfiguration GetFileConfiguration<TRow>()
+        public IDelimitedFile GetFileConfiguration<TRow>()
         {
             return _fileConfigurations[typeof(TRow)];
         }
 
         private void Add(IDelimitedFile file)
         {
-            var fileConfiguration = file.BuildConfiguration();
-
-            _fileConfigurations[fileConfiguration.RowType] = fileConfiguration;
+            _fileConfigurations[file.RowType] = file;
         }
     }
 }

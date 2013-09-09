@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Iteration03.Model;
 using Microsoft.VisualBasic.FileIO;
 
@@ -44,13 +43,13 @@ namespace Iteration03.Imports
             return items.ToArray();
         }
 
-        private TRow CreateItem<TRow>(DelimitedFileConfiguration config, string[] fields) where TRow : new()
+        private TRow CreateItem<TRow>(IDelimitedFile config, string[] fields) where TRow : new()
         {
-            var columns = config.Columns.ToArray();
+            var columns = config.Columns;
 
             var row = new TRow();
 
-            for (int i = 0; i < columns.Length; i++)
+            for (int i = 0; i < columns.Count; i++)
             {
                 var type = columns[i].PropertyType;
                 object value = fields[i];

@@ -6,9 +6,9 @@ namespace Iteration03.Imports
     {
         public TransactionFile()
         {
-            Path("InputFiles\\Transactions.txt");
-            TimeStampFormat("yyyy-MM-dd HH:mm:ss");
-            Delimiter(',');
+            Path = "InputFiles\\Transactions.txt";
+            TimeStampFormat = "yyyy-MM-dd HH:mm:ss";
+            Delimiter = ',';
 
             Column(x => x.Type);
             Column(x => x.Timestamp);
