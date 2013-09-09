@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Iteration03.Importers;
+using Iteration03.Imports;
 using Iteration03.Model;
 using NUnit.Framework;
 using Should;
@@ -13,8 +13,10 @@ namespace Iteration03.Tests
         [Test]
         public void ShouldReadTransactionFile()
         {
-            var importer = new TransactionImporter();
-            var transactions = importer.Read("InputFiles\\Transactions.txt").ToArray();
+            var registry = new DelimitedFileRegistry();
+            var configurationStore = registry.Build();
+            var importer = new DelimitedFileImporter(configurationStore);
+            var transactions = importer.Import<Transaction>().ToArray();
 
             transactions.Length.ShouldEqual(3);
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Iteration03.Importers;
+using Iteration03.Imports;
+using Iteration03.Model;
 using NUnit.Framework;
 using Should;
 
@@ -12,9 +13,11 @@ namespace Iteration03.Tests
         [Test]
         public void ShouldReadPeopleFile()
         {
-            var importer = new PersonImporter();
-            var people = importer.Read("InputFiles\\People.txt").ToArray();
-            
+            var registry = new DelimitedFileRegistry();
+            var configurationStore = registry.Build();
+            var importer = new DelimitedFileImporter(configurationStore);
+            var people = importer.Import<Person>().ToArray();
+
             people.Length.ShouldEqual(2);
 
             people[0].Name.ShouldEqual("John Doe");

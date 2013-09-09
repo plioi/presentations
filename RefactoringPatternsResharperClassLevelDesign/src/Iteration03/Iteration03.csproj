@@ -47,9 +47,15 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Headspring\Enumeration.cs" />
-    <Compile Include="Importers\DelimitedFile.cs" />
-    <Compile Include="Importers\PersonImporter.cs" />
-    <Compile Include="Importers\TransactionImporter.cs" />
+    <Compile Include="Imports\ConfigurationStore.cs" />
+    <Compile Include="Imports\DelimitedFile.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Imports\DelimitedFileColumnConfiguration.cs" />
+    <Compile Include="Imports\DelimitedFileConfiguration.cs" />
+    <Compile Include="Imports\DelimitedFileImporter.cs" />
+    <Compile Include="Imports\DelimitedFileRegistry.cs" />
+    <Compile Include="Imports\PersonFile.cs" />
+    <Compile Include="Imports\TransactionFile.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\TransactionType.cs" />
