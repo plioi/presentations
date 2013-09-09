@@ -9,7 +9,7 @@ namespace Iteration03.Imports
             Scan(scan =>
             {
                 scan.TheCallingAssembly();
-                scan.AddAllTypesOf<IDelimitedFile>();
+                scan.AddAllTypesOf<DelimitedFile>();
             });
 
             For<DelimitedFileImporter>().Singleton();

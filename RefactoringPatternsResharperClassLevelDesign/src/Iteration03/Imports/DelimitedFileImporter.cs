@@ -9,9 +9,9 @@ namespace Iteration03.Imports
 {
     public class DelimitedFileImporter
     {
-        private readonly IDictionary<Type, IDelimitedFile> _filesByType;
+        private readonly IDictionary<Type, DelimitedFile> _filesByType;
 
-        public DelimitedFileImporter(params IDelimitedFile[] delimitedFiles)
+        public DelimitedFileImporter(params DelimitedFile[] delimitedFiles)
         {
             _filesByType = delimitedFiles.ToDictionary(file => file.RowType);
         }
@@ -44,7 +44,7 @@ namespace Iteration03.Imports
             return items.ToArray();
         }
 
-        private TRow CreateItem<TRow>(IDelimitedFile config, string[] fields) where TRow : new()
+        private TRow CreateItem<TRow>(DelimitedFile config, string[] fields) where TRow : new()
         {
             var columns = config.Columns;
 
