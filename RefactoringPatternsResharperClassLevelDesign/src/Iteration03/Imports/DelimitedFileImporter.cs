@@ -18,25 +18,25 @@ namespace Iteration03.Imports
 
         public IEnumerable<TRow> Import<TRow>() where TRow : new()
         {
-            var config = _filesByType[typeof(TRow)];
+            var file = _filesByType[typeof(TRow)];
 
-            var parser = new TextFieldParser(config.Path);
+            var parser = new TextFieldParser(file.Path);
             parser.TextFieldType = FieldType.Delimited;
             parser.HasFieldsEnclosedInQuotes = true;
-            parser.SetDelimiters(config.Delimiter.ToString());
+            parser.SetDelimiters(file.Delimiter.ToString());
 
             var items = new List<TRow>();
 
             while (!parser.EndOfData)
             {
-                bool atHeaderLine = parser.LineNumber == 1 && config.HasHeaderLine;
+                bool atHeaderLine = parser.LineNumber == 1 && file.HasHeaderLine;
 
                 var fields = parser.ReadFields();
 
                 if (atHeaderLine)
                     continue;
 
-                items.Add(CreateItem<TRow>(config, fields));
+                items.Add(CreateItem<TRow>(file, fields));
             }
 
             parser.Close();
