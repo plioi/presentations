@@ -55,7 +55,7 @@
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Imports\DelimitedFileColumn.cs" />
     <Compile Include="Imports\DelimitedFileImporter.cs" />
-    <Compile Include="Imports\ImportsStructureMapRegistry.cs" />
+    <Compile Include="Imports\ImportsRegistry.cs" />
     <Compile Include="Imports\PersonFile.cs" />
     <Compile Include="Imports\TransactionFile.cs" />
     <Compile Include="Model\Person.cs" />

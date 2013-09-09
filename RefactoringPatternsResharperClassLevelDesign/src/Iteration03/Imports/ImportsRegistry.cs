@@ -2,9 +2,9 @@ using StructureMap.Configuration.DSL;
 
 namespace Iteration03.Imports
 {
-    public class ImportsStructureMapRegistry : Registry
+    public class ImportsRegistry : Registry
     {
-        public ImportsStructureMapRegistry()
+        public ImportsRegistry()
         {
             Scan(scan =>
             {
