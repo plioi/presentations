@@ -8,9 +8,13 @@ namespace Iteration03.Imports
         private readonly IList<Action<ConfigurationStore>> _storeActions = new List<Action<ConfigurationStore>>();
 
         public DelimitedFileRegistry()
+            : this(new PersonFile(), new TransactionFile())
         {
-            File(new PersonFile());
-            File(new TransactionFile());
+        }
+
+        public DelimitedFileRegistry(params IDelimitedFile[] delimitedFiles)
+        {
+            delimitedFiles.ForEach(File);
         }
 
         public void File(IDelimitedFile file)
