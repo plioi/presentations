@@ -52,9 +52,14 @@
     <Compile Include="DependencyResolution\DependencyRegistrar.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Headspring\Enumeration.cs" />
+    <Compile Include="Imports\ColumnParsers\DateTimeColumnParser.cs" />
+    <Compile Include="Imports\ColumnParsers\DecimalColumnParser.cs" />
+    <Compile Include="Imports\ColumnParsers\StringColumnParser.cs" />
+    <Compile Include="Imports\ColumnParsers\TransactionTypeColumnParser.cs" />
     <Compile Include="Imports\DelimitedFile.cs" />
     <Compile Include="Imports\DelimitedFileColumn.cs" />
     <Compile Include="Imports\DelimitedFileImporter.cs" />
+    <Compile Include="Imports\ColumnParsers\IColumnParser.cs" />
     <Compile Include="Imports\ImportsRegistry.cs" />
     <Compile Include="Imports\PersonFile.cs" />
     <Compile Include="Imports\TransactionFile.cs" />
@@ -77,6 +82,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

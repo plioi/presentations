@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Iteration04.Model;
+using Iteration04.Imports.ColumnParsers;
 using Microsoft.VisualBasic.FileIO;
 
 namespace Iteration04.Imports
@@ -10,9 +9,11 @@ namespace Iteration04.Imports
     public class DelimitedFileImporter
     {
         private readonly IDictionary<Type, DelimitedFile> _filesByType;
+        private readonly IColumnParser[] _columnParsers;
 
-        public DelimitedFileImporter(params DelimitedFile[] delimitedFiles)
+        public DelimitedFileImporter(DelimitedFile[] delimitedFiles, IColumnParser[] columnParsers)
         {
+            _columnParsers = columnParsers;
             _filesByType = delimitedFiles.ToDictionary(file => file.RowType);
         }
 
@@ -52,22 +53,21 @@ namespace Iteration04.Imports
 
             for (int i = 0; i < columns.Count; i++)
             {
-                var type = columns[i].PropertyType;
-                object value = fields[i];
-
-                if (type == typeof(decimal))
-                    value = Decimal.Parse(fields[i]);
-                else if (type == typeof(TransactionType))
-                    value = TransactionType.GetTransactionType(fields[i]);
-                else if (type == typeof(DateTime))
-                    value = DateTime.ParseExact(fields[i], config.TimeStampFormat, CultureInfo.InvariantCulture);
-                else if (type != typeof(string))
-                    throw new Exception(GetType().Name + " does not support properties of type " + type);
+                var value = Parse<TRow>(fields[i], config, columns[i]);
 
                 columns[i].SetProperty(row, value);
             }
 
             return row;
+        }
+
+        private object Parse<TRow>(string rawValue, DelimitedFile config, DelimitedFileColumn column)
+        {
+            foreach (var columnParser in _columnParsers)
+                if (columnParser.CanHandle(column.Property))
+                    return columnParser.Parse(rawValue, config);
+
+            throw new Exception(string.Format("{0} does not support property {1}.{2}.", GetType().Name, typeof(TRow).Name, column.Property.Name));
         }
     }
 }

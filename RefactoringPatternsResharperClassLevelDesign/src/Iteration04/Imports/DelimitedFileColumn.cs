@@ -14,6 +14,7 @@ namespace Iteration04.Imports
         }
 
         public Type PropertyType { get { return _property.PropertyType; } }
+        public PropertyInfo Property { get { return _property; } }
 
         public void SetProperty(object instance, object propertyValue)
         {
