@@ -7,6 +7,11 @@ namespace Iteration03.Imports
     {
         private readonly IDictionary<Type, DelimitedFileConfiguration> _fileConfigurations = new Dictionary<Type, DelimitedFileConfiguration>();
 
+        public ConfigurationStore(DelimitedFileRegistry delimitedFileRegistry)
+        {
+            delimitedFileRegistry.Apply(this);
+        }
+
         public DelimitedFileConfiguration GetFileConfiguration<TRow>()
         {
             return GetFileConfiguration(typeof(TRow));

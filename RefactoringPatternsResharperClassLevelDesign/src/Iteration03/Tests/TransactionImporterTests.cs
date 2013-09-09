@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Iteration03.DependencyResolution;
 using Iteration03.Imports;
 using Iteration03.Model;
 using NUnit.Framework;
@@ -13,9 +14,7 @@ namespace Iteration03.Tests
         [Test]
         public void ShouldReadTransactionFile()
         {
-            var registry = new DelimitedFileRegistry();
-            var configurationStore = registry.Build();
-            var importer = new DelimitedFileImporter(configurationStore);
+            var importer = DependencyRegistrar.Resolve<DelimitedFileImporter>();
             var transactions = importer.Import<Transaction>().ToArray();
 
             transactions.Length.ShouldEqual(3);
