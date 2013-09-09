@@ -4,11 +4,11 @@ using System.Reflection;
 
 namespace Iteration03.Imports
 {
-    public class DelimitedFileColumnConfiguration
+    public class DelimitedFileColumn
     {
         private readonly PropertyInfo _property;
 
-        public DelimitedFileColumnConfiguration(LambdaExpression memberExpr)
+        public DelimitedFileColumn(LambdaExpression memberExpr)
         {
             _property = (PropertyInfo) FindProperty(memberExpr);
         }

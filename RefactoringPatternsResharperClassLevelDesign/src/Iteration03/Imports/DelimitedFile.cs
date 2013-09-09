@@ -11,38 +11,49 @@ namespace Iteration03.Imports
 
     public class DelimitedFile<TRow> : IDelimitedFile where TRow : new()
     {
-        private readonly IList<Action<DelimitedFileConfiguration>> _fileActions = new List<Action<DelimitedFileConfiguration>>();
+        private readonly IList<DelimitedFileColumn> _columns = new List<DelimitedFileColumn>();
+
+        private string _path;
+        private string _timeStampFormat;
+        private char _delimiter;
+        private bool _hasHeaderLine;
 
         public void Path(string path)
         {
-            _fileActions.Add(cfg => cfg.Path = path);
+            _path = path;
         }
 
         public void TimeStampFormat(string format)
         {
-            _fileActions.Add(cfg => cfg.TimeStampFormat = format);
+            _timeStampFormat = format;
         }
 
         public void Delimiter(char delimiter)
         {
-            _fileActions.Add(cfg => cfg.Delimiter = delimiter);
+            _delimiter = delimiter;
         }
 
         public void HasHeaderLine()
         {
-            _fileActions.Add(cfg => cfg.HasHeaderLine = true);
+            _hasHeaderLine = true;
         }
 
         public void Column(Expression<Func<TRow, object>> memberExpr)
         {
-            _fileActions.Add(cfg => cfg.AddColumn(new DelimitedFileColumnConfiguration(memberExpr)));
+            _columns.Add(new DelimitedFileColumn(memberExpr));
         }
 
         public DelimitedFileConfiguration BuildConfiguration()
         {
-            var fileConfig = new DelimitedFileConfiguration(typeof(TRow));
+            var fileConfig = new DelimitedFileConfiguration(typeof(TRow))
+            {
+                Path = _path,
+                TimeStampFormat = _timeStampFormat,
+                Delimiter = _delimiter,
+                HasHeaderLine = _hasHeaderLine
+            };
 
-            _fileActions.ForEach(fileAction => fileAction(fileConfig));
+            _columns.ForEach(fileConfig.AddColumn);
 
             return fileConfig;
         }

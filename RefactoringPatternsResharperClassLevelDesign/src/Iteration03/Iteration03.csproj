@@ -54,7 +54,7 @@
     <Compile Include="Imports\ConfigurationStore.cs" />
     <Compile Include="Imports\DelimitedFile.cs" />
     <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="Imports\DelimitedFileColumnConfiguration.cs" />
+    <Compile Include="Imports\DelimitedFileColumn.cs" />
     <Compile Include="Imports\DelimitedFileConfiguration.cs" />
     <Compile Include="Imports\DelimitedFileImporter.cs" />
     <Compile Include="Imports\ImportsStructureMapRegistry.cs" />

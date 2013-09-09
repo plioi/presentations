@@ -5,7 +5,7 @@ namespace Iteration03.Imports
 {
     public class DelimitedFileConfiguration
     {
-        private readonly List<DelimitedFileColumnConfiguration> _columns = new List<DelimitedFileColumnConfiguration>();
+        private readonly List<DelimitedFileColumn> _columns = new List<DelimitedFileColumn>();
 
         public DelimitedFileConfiguration(Type rowType)
         {
@@ -18,12 +18,12 @@ namespace Iteration03.Imports
         public bool HasHeaderLine { get; set; }
         public string TimeStampFormat { get; set; }
 
-        public IEnumerable<DelimitedFileColumnConfiguration> Columns
+        public IEnumerable<DelimitedFileColumn> Columns
         {
             get { return _columns; }
         }
 
-        public void AddColumn(DelimitedFileColumnConfiguration column)
+        public void AddColumn(DelimitedFileColumn column)
         {
             _columns.Add(column);
         }
