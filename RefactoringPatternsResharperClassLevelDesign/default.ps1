@@ -18,6 +18,7 @@ task Test -depends Compile {
     NUnit "Iteration01"
     NUnit "Iteration02"
     NUnit "Iteration03"
+    NUnit "Iteration04"
 }
 
 task Compile -depends CommonAssemblyInfo {
