@@ -13,16 +13,9 @@ namespace Iteration03.Imports
             File(new TransactionFile());
         }
 
-        public void File<TRow>(DelimitedFile<TRow> file) where TRow : new()
+        public void File(IDelimitedFile file)
         {
-            _storeActions.Add(cfg =>
-            {
-                var fileConfig = new DelimitedFileConfiguration(typeof(TRow));
-
-                file.Apply(fileConfig);
-
-                cfg.AddFileConfiguration(fileConfig);
-            });
+            _storeActions.Add(cfg => cfg.AddFileConfiguration(file.BuildConfiguration()));
         }
 
         public ConfigurationStore Build()

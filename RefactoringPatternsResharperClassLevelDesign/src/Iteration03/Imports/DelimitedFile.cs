@@ -4,7 +4,12 @@ using System.Linq.Expressions;
 
 namespace Iteration03.Imports
 {
-    public class DelimitedFile<TRow> where TRow : new()
+    public interface IDelimitedFile
+    {
+        DelimitedFileConfiguration BuildConfiguration();
+    }
+
+    public class DelimitedFile<TRow> : IDelimitedFile where TRow : new()
     {
         private readonly IList<Action<DelimitedFileConfiguration>> _fileActions = new List<Action<DelimitedFileConfiguration>>();
 
@@ -33,9 +38,13 @@ namespace Iteration03.Imports
             _fileActions.Add(cfg => cfg.AddColumn(new DelimitedFileColumnConfiguration(memberExpr)));
         }
 
-        public void Apply(DelimitedFileConfiguration configuration)
+        public DelimitedFileConfiguration BuildConfiguration()
         {
-            _fileActions.ForEach(fileAction => fileAction(configuration));
+            var fileConfig = new DelimitedFileConfiguration(typeof(TRow));
+
+            _fileActions.ForEach(fileAction => fileAction(fileConfig));
+
+            return fileConfig;
         }
     }
 }
