@@ -7,24 +7,21 @@ namespace Iteration03.Imports
     {
         private readonly IDictionary<Type, DelimitedFileConfiguration> _fileConfigurations = new Dictionary<Type, DelimitedFileConfiguration>();
 
-        public ConfigurationStore(DelimitedFileRegistry delimitedFileRegistry)
+        public ConfigurationStore(params IDelimitedFile[] delimitedFiles)
         {
-            delimitedFileRegistry.Apply(this);
+            delimitedFiles.ForEach(Add);
         }
 
         public DelimitedFileConfiguration GetFileConfiguration<TRow>()
         {
-            return GetFileConfiguration(typeof(TRow));
+            return _fileConfigurations[typeof(TRow)];
         }
 
-        public DelimitedFileConfiguration GetFileConfiguration(Type rowType)
+        private void Add(IDelimitedFile file)
         {
-            return _fileConfigurations[rowType];
-        }
+            var fileConfiguration = file.BuildConfiguration();
 
-        public void AddFileConfiguration(DelimitedFileConfiguration csvFileConfiguration)
-        {
-            _fileConfigurations[csvFileConfiguration.RowType] = csvFileConfiguration;
+            _fileConfigurations[fileConfiguration.RowType] = fileConfiguration;
         }
     }
 }

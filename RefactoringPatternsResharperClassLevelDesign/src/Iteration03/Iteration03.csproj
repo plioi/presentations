@@ -57,7 +57,6 @@
     <Compile Include="Imports\DelimitedFileColumnConfiguration.cs" />
     <Compile Include="Imports\DelimitedFileConfiguration.cs" />
     <Compile Include="Imports\DelimitedFileImporter.cs" />
-    <Compile Include="Imports\DelimitedFileRegistry.cs" />
     <Compile Include="Imports\ImportsStructureMapRegistry.cs" />
     <Compile Include="Imports\PersonFile.cs" />
     <Compile Include="Imports\TransactionFile.cs" />
